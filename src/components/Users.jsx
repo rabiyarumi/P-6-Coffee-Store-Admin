@@ -34,7 +34,6 @@ const Users = () => {
               setUsers(remainingUser);
             }
 
-            console.log("delete is done", data);
           });
       }
     });

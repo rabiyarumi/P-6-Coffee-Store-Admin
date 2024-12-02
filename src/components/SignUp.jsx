@@ -11,11 +11,10 @@ const SignUp = () => {
       const name = e.target.name.value;
       const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log("from Sign Up",name, email, password);
 
         createUser(email, password)
         .then(result => {
-          console.log("user created to fb",result.user)
+          // console.log("user created to fb",result.user)
           const createdAt = result?.user?.metadata?.creationTime;
           const newUser = {name, email, createdAt};
             //save new user to the database

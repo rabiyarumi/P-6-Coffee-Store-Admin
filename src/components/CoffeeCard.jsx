@@ -8,7 +8,6 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
   const { _id, name, quantity, supplier, taste, category, details, photo } = coffee;
 
   const handleDelete = (_id) => {
-    console.log(_id);
 
     Swal.fire({
       title: "Are you sure?",
@@ -25,7 +24,7 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",

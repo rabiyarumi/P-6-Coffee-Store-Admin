@@ -8,12 +8,11 @@ const Login = () => {
         e.preventDefault()
         const email = e.target.email.value;
           const password = e.target.password.value;
-          console.log("from Login", email, password);
 
           //user login from fb
           loginUser(email, password)
           .then(result => {
-            console.log(result)
+            // console.log(result)
 
             //update last login time
             const lastSignInTime = result?.user?.metadata?.lastSignInTime;
@@ -28,7 +27,7 @@ const Login = () => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log('sign in info updated in db', data)
+                // console.log('sign in info updated in db', data)
             })
 
           })
