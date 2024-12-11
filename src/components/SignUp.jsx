@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const SignUp = () => {
 
@@ -17,27 +18,37 @@ const SignUp = () => {
           // console.log("user created to fb",result.user)
           const createdAt = result?.user?.metadata?.creationTime;
           const newUser = {name, email, createdAt};
-            //save new user to the database
-            fetch('https://coffee-store-server-chi-lime.vercel.app/users', {
-              method: "POST",
-              headers: {
-                "content-type": "application/json"
-              },
-              body: JSON.stringify(newUser)
-            })
-            .then(res => res.json())
-            .then(data => {
-              // console.log("user created to db",data)
-              if(data.insertedId){
-                Swal.fire({
-                  position: "top-end",
-                  icon: "success",
-                  title: "You have Signed Up Successfully",
-                  showConfirmButton: false,
-                  timer: 1500
-                });
-              }
-            })
+
+
+           //save new user to the database using axios
+           axios.post(" https://coffee-store-server-chi-lime.vercel.app/users", newUser)
+           .then(data => {
+            console.log(data.data)
+           })
+
+
+
+            // //save new user to the database using fetch
+            // fetch(' https://coffee-store-server-chi-lime.vercel.app/users', {
+            //   method: "POST",
+            //   headers: {
+            //     "content-type": "application/json"
+            //   },
+            //   body: JSON.stringify(newUser)
+            // })
+            // .then(res => res.json())
+            // .then(data => {
+            //   // console.log("user created to db",data)
+            //   if(data.insertedId){
+            //     Swal.fire({
+            //       position: "top-end",
+            //       icon: "success",
+            //       title: "You have Signed Up Successfully",
+            //       showConfirmButton: false,
+            //       timer: 1500
+            //     });
+            //   }
+            // })
         })
         .catch(error => {
             console.log("signUp error", error)

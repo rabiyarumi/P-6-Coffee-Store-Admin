@@ -6,6 +6,7 @@ import MainLayout from "../layouts/MainLayout";
 import Login from "../components/Login";
 import SignUp from "../components/SignUp";
 import Users from "../components/Users";
+import Users2 from "../components/Users2";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,8 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch('https://coffee-store-server-chi-lime.vercel.app/coffee')
+        loader: () =>
+          fetch(" https://coffee-store-server-chi-lime.vercel.app/coffee"),
       },
       {
         path: "/addCoffee",
@@ -24,22 +26,34 @@ const router = createBrowserRouter([
       {
         path: "/updateCoffee/:id",
         element: <UpdateCoffee />,
-        loader: ({params}) => fetch(`https://coffee-store-server-chi-lime.vercel.app/coffee/${params.id}`)
+        loader: ({ params }) =>
+          fetch(
+            ` https://coffee-store-server-chi-lime.vercel.app/coffee/${params.id}`
+          ),
       },
       {
         path: "/login",
-        element: <Login/>
+        element: <Login />,
       },
       {
         path: "/signup",
-        element: <SignUp/>
+        element: <SignUp />,
       },
       {
         path: "/users",
-        element: <Users/>,
-        loader: () => fetch("https://coffee-store-server-chi-lime.vercel.app/users")
-      }
+        element: <Users />,
+        loader: () =>
+          fetch(" https://coffee-store-server-chi-lime.vercel.app/users"),
+      },
+      {
+        path: "/users2",
+        element: <Users2 />,
+        
+      },
     ],
   },
 ]);
 export default router;
+
+
+// https://coffee-store-server-chi-lime.vercel.app
